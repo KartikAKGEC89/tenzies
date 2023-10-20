@@ -32,7 +32,11 @@ function App() {
   }
   // console.log(allNewDice())
 
-  const Dice = dice.map(die => <Die key={die.id} value={die.value} />)
+  function hold(id) {
+    console.log(id)
+  }
+
+  const Dice = dice.map(die => <Die key={die.id} value={die.value} isHeld={die.isHeld} hold={ () => hold(die.id)} />)
   return (
     <main className='die-container'>
       {Dice}
