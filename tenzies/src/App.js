@@ -31,9 +31,24 @@ function App() {
     return arr
   }
   // console.log(allNewDice())
+  
+
+
+// Hold Function use of map update state
+
+
 
   function hold(id) {
-    console.log(id)
+    setDice(
+      oldDice => oldDice.map(die => {
+        return die.id === id ?
+          {
+            ...die,
+            isHeld: !die.isHeld
+          } :
+          die
+      })
+    )
   }
 
   const Dice = dice.map(die => <Die key={die.id} value={die.value} isHeld={die.isHeld} hold={ () => hold(die.id)} />)
